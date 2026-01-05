@@ -1,5 +1,5 @@
-import React from 'react';
-import { AlertTriangle, CheckCircle, BookOpen } from 'lucide-react'; // Added BookOpen icon
+import React, { useState } from 'react';
+import { AlertTriangle, CheckCircle, BookOpen, Share2, Check } from 'lucide-react';
 import TreeNode from './TreeNode';
 
 const Visualizer = ({
@@ -10,6 +10,16 @@ const Visualizer = ({
     isMobile,
     dictionary
 }) => {
+    // Local state for the "Copied!" feedback
+    const [copied, setCopied] = useState(false);
+
+    const handleShare = () => {
+        // Copies the current URL (which is kept in sync by App.js)
+        navigator.clipboard.writeText(window.location.href).then(() => {
+            setCopied(true);
+            setTimeout(() => setCopied(false), 2000); // Reset after 2 seconds
+        });
+    };
 
     // 1. Loading State
     if (isLoading) {
@@ -24,7 +34,6 @@ const Visualizer = ({
     if (!data) {
         return (
             <div className="visualizer" style={{ alignItems: 'center', justifyContent: 'center', padding: 20, background: '#f8fafc' }}>
-                {/* Minimal Empty State */}
                 <div style={{ textAlign: 'center', color: '#cbd5e1' }}>
                     <BookOpen size={48} style={{ opacity: 0.5, marginBottom: '1rem' }} />
                     <div style={{ fontSize: '0.9rem', fontWeight: 500 }}>{dictionary.selectPrompt}</div>
@@ -39,11 +48,37 @@ const Visualizer = ({
         <div className="visualizer">
             {/* Header Section */}
             <div className="kural-header">
-                <div className="status-badge-container">
-                    <span className={`status-badge ${hasError ? 'error' : 'success'}`}>
-                        {hasError ? <AlertTriangle size={14} /> : <CheckCircle size={14} />}
-                        {hasError ? dictionary.grammarError : dictionary.grammarSuccess}
-                    </span>
+
+                {/* Top Row: Status Badge and Share Button */}
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
+                    <div className="status-badge-container" style={{ marginBottom: 0 }}>
+                        <span className={`status-badge ${hasError ? 'error' : 'success'}`}>
+                            {hasError ? <AlertTriangle size={14} /> : <CheckCircle size={14} />}
+                            {hasError ? dictionary.grammarError : dictionary.grammarSuccess}
+                        </span>
+                    </div>
+
+                    {/* Share Button */}
+                    <button
+                        onClick={handleShare}
+                        style={{
+                            background: copied ? '#dcfce7' : '#f1f5f9',
+                            color: copied ? '#166534' : '#475569',
+                            border: 'none',
+                            padding: '6px 12px',
+                            borderRadius: '6px',
+                            cursor: 'pointer',
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: '6px',
+                            fontSize: '0.85rem',
+                            fontWeight: 500,
+                            transition: 'all 0.2s'
+                        }}
+                    >
+                        {copied ? <Check size={14} /> : <Share2 size={14} />}
+                        {copied ? 'Copied!' : 'Share'}
+                    </button>
                 </div>
 
                 <h2 className="kural-title">{dictionary.kuralLabel} {data.number}</h2>

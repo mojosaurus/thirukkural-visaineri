@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ArrowLeft, ChevronRight, Home } from 'lucide-react';
 import { BOOK_STRUCTURE } from '../data';
 
@@ -13,11 +13,43 @@ const Sidebar = ({
     const [selIyal, setSelIyal] = useState(null);
     const [selAdhikaram, setSelAdhikaram] = useState(null);
 
+    // --- NEW: AUTO-NAVIGATE ON DEEP LINK ---
+    useEffect(() => {
+        if (selectedKuralNumber) {
+            // If we are already viewing the correct Adhikaram, don't re-run (prevents jitter)
+            if (selAdhikaram && selectedKuralNumber >= selAdhikaram.start && selectedKuralNumber <= selAdhikaram.end) {
+                return;
+            }
+
+            // Reverse Lookup: Find the hierarchy for this Kural number
+            const structure = BOOK_STRUCTURE[0]; // Access the root object
+
+            // Iterate through Paals
+            for (const paal of structure.section.detail) {
+                // Iterate through Iyals
+                for (const iyal of paal.chapterGroup.detail) {
+                    // Iterate through Adhikarams
+                    for (const adh of iyal.chapters.detail) {
+                        // Check if the Kural is in this Adhikaram range
+                        if (selectedKuralNumber >= adh.start && selectedKuralNumber <= adh.end) {
+                            setSelPaal(paal);
+                            setSelIyal(iyal);
+                            setSelAdhikaram(adh);
+                            return; // Found it, stop searching
+                        }
+                    }
+                }
+            }
+        }
+        // Note: We deliberately exclude 'selAdhikaram' from deps to avoid circular logic
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [selectedKuralNumber]);
+
     // Helper to get emojis for Paal
     const getPaalIcon = (number) => {
         switch (number) {
             case 1: return "⚖️"; // Virtue
-            case 2: return "₹";  // Wealth (Updated to Rupee Symbol)
+            case 2: return "₹";  // Wealth
             case 3: return "❤️"; // Love
             default: return "📖";
         }
@@ -28,9 +60,11 @@ const Sidebar = ({
         setSelPaal(null);
         setSelIyal(null);
         setSelAdhikaram(null);
+        // Optional: If you want clicking Home to also clear the selection in the main view:
+        // onSelectKural(null); 
     };
 
-    // Reusable Header Component with Home Button
+    // Reusable Header Component
     const SidebarHeader = ({ onBack, title, icon }) => (
         <div className="sidebar-header">
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
@@ -39,7 +73,6 @@ const Sidebar = ({
                     {dictionary.back}
                 </button>
 
-                {/* Home Button */}
                 <button
                     className="back-link"
                     onClick={goHome}
@@ -71,7 +104,6 @@ const Sidebar = ({
                         onClick={() => setSelPaal(paal)}
                     >
                         <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                            {/* Emoji/Symbol Logo */}
                             <div style={{
                                 fontSize: '1.5rem',
                                 background: '#f1f5f9',
