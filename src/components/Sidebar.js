@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ArrowLeft, ChevronRight } from 'lucide-react';
+import { ArrowLeft, ChevronRight, Home } from 'lucide-react';
 import { BOOK_STRUCTURE } from '../data';
 
 const Sidebar = ({
@@ -17,13 +17,47 @@ const Sidebar = ({
     const getPaalIcon = (number) => {
         switch (number) {
             case 1: return "⚖️"; // Virtue
-            case 2: return "💰"; // Wealth
+            case 2: return "₹";  // Wealth (Updated to Rupee Symbol)
             case 3: return "❤️"; // Love
             default: return "📖";
         }
     };
 
-    // --- LEVEL 1: PAAL SELECTION ---
+    // Helper to Reset Navigation (Home)
+    const goHome = () => {
+        setSelPaal(null);
+        setSelIyal(null);
+        setSelAdhikaram(null);
+    };
+
+    // Reusable Header Component with Home Button
+    const SidebarHeader = ({ onBack, title, icon }) => (
+        <div className="sidebar-header">
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
+                <button className="back-link" onClick={onBack} title={dictionary.back}>
+                    <ArrowLeft size={16} style={{ display: 'inline', marginRight: 4 }} />
+                    {dictionary.back}
+                </button>
+
+                {/* Home Button */}
+                <button
+                    className="back-link"
+                    onClick={goHome}
+                    title="Home"
+                    style={{ display: 'flex', alignItems: 'center', gap: '4px' }}
+                >
+                    <Home size={16} />
+                </button>
+            </div>
+
+            <div className="section-title">
+                {icon && <span style={{ marginRight: '8px' }}>{icon}</span>}
+                {title}
+            </div>
+        </div>
+    );
+
+    // --- LEVEL 1: PAAL SELECTION (ROOT) ---
     if (!selPaal) {
         return (
             <div className="sidebar">
@@ -37,7 +71,7 @@ const Sidebar = ({
                         onClick={() => setSelPaal(paal)}
                     >
                         <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                            {/* Emoji Logo */}
+                            {/* Emoji/Symbol Logo */}
                             <div style={{
                                 fontSize: '1.5rem',
                                 background: '#f1f5f9',
@@ -46,7 +80,9 @@ const Sidebar = ({
                                 display: 'flex',
                                 alignItems: 'center',
                                 justifyContent: 'center',
-                                borderRadius: '8px'
+                                borderRadius: '8px',
+                                fontWeight: 'bold',
+                                color: '#475569'
                             }}>
                                 {getPaalIcon(paal.number)}
                             </div>
@@ -66,15 +102,11 @@ const Sidebar = ({
     if (!selIyal) {
         return (
             <div className="sidebar">
-                <div className="sidebar-header">
-                    <button className="back-link" onClick={() => setSelPaal(null)}>
-                        <ArrowLeft size={14} style={{ display: 'inline', marginRight: 4 }} />
-                        {dictionary.back}
-                    </button>
-                    <div className="section-title">
-                        {getPaalIcon(selPaal.number)} {lang === 'ta' ? selPaal.name : selPaal.translation}
-                    </div>
-                </div>
+                <SidebarHeader
+                    onBack={() => setSelPaal(null)}
+                    title={lang === 'ta' ? selPaal.name : selPaal.translation}
+                    icon={getPaalIcon(selPaal.number)}
+                />
                 {selPaal.chapterGroup.detail.map((iyal) => (
                     <div
                         key={iyal.number}
@@ -98,20 +130,16 @@ const Sidebar = ({
     if (!selAdhikaram) {
         return (
             <div className="sidebar">
-                <div className="sidebar-header">
-                    <button className="back-link" onClick={() => setSelIyal(null)}>
-                        <ArrowLeft size={14} style={{ display: 'inline', marginRight: 4 }} />
-                        {dictionary.back}
-                    </button>
-                    <div className="section-title">{lang === 'ta' ? selIyal.name : selIyal.translation}</div>
-                </div>
+                <SidebarHeader
+                    onBack={() => setSelIyal(null)}
+                    title={lang === 'ta' ? selIyal.name : selIyal.translation}
+                />
                 {selIyal.chapters.detail.map((adh) => (
                     <div
                         key={adh.number}
                         className="list-item"
                         onClick={() => setSelAdhikaram(adh)}
                     >
-                        {/* UPDATED: Now shows both languages */}
                         <div>
                             <div className="item-main">{adh.number}. {lang === 'ta' ? adh.name : adh.translation}</div>
                             <div className="item-sub">{lang === 'ta' ? adh.translation : adh.name}</div>
@@ -130,15 +158,10 @@ const Sidebar = ({
 
     return (
         <div className="sidebar">
-            <div className="sidebar-header">
-                <button className="back-link" onClick={() => setSelAdhikaram(null)}>
-                    <ArrowLeft size={14} style={{ display: 'inline', marginRight: 4 }} />
-                    {dictionary.back}
-                </button>
-                <div className="section-title">
-                    {adhikaramLabel(selAdhikaram, lang)}
-                </div>
-            </div>
+            <SidebarHeader
+                onBack={() => setSelAdhikaram(null)}
+                title={adhikaramLabel(selAdhikaram, lang)}
+            />
 
             {kuralList.map((num) => (
                 <div
