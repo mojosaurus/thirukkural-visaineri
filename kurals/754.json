@@ -1,0 +1,390 @@
+{
+  "number": 754,
+  "type": "Venpa",
+  "tamil_type": "வெண்பா",
+  "status": "success",
+  "value": "அறனீனு மின்பமு மீனுந் திறனறிந்து\nதீதின்றி வந்த பொருள்",
+  "errors": [],
+  "structure": [
+    {
+      "type": "Adi",
+      "tamil_type": "அடி",
+      "value": "அறனீனு மின்பமு மீனுந் திறனறிந்து",
+      "feet": [
+        {
+          "type": "Cheer",
+          "tamil_type": "சீர்",
+          "value": "அறனீனு",
+          "children": [
+            {
+              "type": "Pulimangai",
+              "tamil_type": "புளிமாங்காய்",
+              "value": "அறனீனு",
+              "children": [
+                {
+                  "type": "Pulima",
+                  "tamil_type": "புளிமா",
+                  "value": "அறனீ",
+                  "children": [
+                    {
+                      "type": "Nirai",
+                      "tamil_type": "நிரை",
+                      "value": "அற",
+                      "children": [
+                        {
+                          "type": "Kuril",
+                          "tamil_type": "குறில்",
+                          "value": "அ"
+                        },
+                        {
+                          "type": "Kuril",
+                          "tamil_type": "குறில்",
+                          "value": "ற"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "Ner",
+                      "tamil_type": "நேர்",
+                      "value": "னீ",
+                      "children": [
+                        {
+                          "type": "Nedil",
+                          "tamil_type": "நெடில்",
+                          "value": "னீ"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "Ner",
+                  "tamil_type": "நேர்",
+                  "value": "னு",
+                  "children": [
+                    {
+                      "type": "Mutriyalugaram",
+                      "tamil_type": "முற்றியலுகரம்",
+                      "value": "னு"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "Cheer",
+          "tamil_type": "சீர்",
+          "value": "மின்பமு",
+          "children": [
+            {
+              "type": "Koovilam",
+              "tamil_type": "கூவிளம்",
+              "value": "மின்பமு",
+              "children": [
+                {
+                  "type": "Ner",
+                  "tamil_type": "நேர்",
+                  "value": "மின்",
+                  "children": [
+                    {
+                      "type": "Kuril",
+                      "tamil_type": "குறில்",
+                      "value": "மி"
+                    },
+                    {
+                      "type": "Otru",
+                      "tamil_type": "ஒற்று",
+                      "value": "ன்"
+                    }
+                  ]
+                },
+                {
+                  "type": "Nirai",
+                  "tamil_type": "நிரை",
+                  "value": "பமு",
+                  "children": [
+                    {
+                      "type": "Kuril",
+                      "tamil_type": "குறில்",
+                      "value": "ப"
+                    },
+                    {
+                      "type": "Mutriyalugaram",
+                      "tamil_type": "முற்றியலுகரம்",
+                      "value": "மு"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "Cheer",
+          "tamil_type": "சீர்",
+          "value": "மீனுந்",
+          "children": [
+            {
+              "type": "Thema",
+              "tamil_type": "தேமா",
+              "value": "மீனுந்",
+              "children": [
+                {
+                  "type": "Ner",
+                  "tamil_type": "நேர்",
+                  "value": "மீ",
+                  "children": [
+                    {
+                      "type": "Nedil",
+                      "tamil_type": "நெடில்",
+                      "value": "மீ"
+                    }
+                  ]
+                },
+                {
+                  "type": "Ner",
+                  "tamil_type": "நேர்",
+                  "value": "னுந்",
+                  "children": [
+                    {
+                      "type": "Mutriyalugaram",
+                      "tamil_type": "முற்றியலுகரம்",
+                      "value": "னு"
+                    },
+                    {
+                      "type": "Otru",
+                      "tamil_type": "ஒற்று",
+                      "value": "ந்"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "Cheer",
+          "tamil_type": "சீர்",
+          "value": "திறனறிந்து",
+          "children": [
+            {
+              "type": "Karuvilangai",
+              "tamil_type": "கருவிளங்காய்",
+              "value": "திறனறிந்து",
+              "children": [
+                {
+                  "type": "Karuvilam",
+                  "tamil_type": "கருவிளம்",
+                  "value": "திறனறிந்",
+                  "children": [
+                    {
+                      "type": "Nirai",
+                      "tamil_type": "நிரை",
+                      "value": "திற",
+                      "children": [
+                        {
+                          "type": "Kuril",
+                          "tamil_type": "குறில்",
+                          "value": "தி"
+                        },
+                        {
+                          "type": "Kuril",
+                          "tamil_type": "குறில்",
+                          "value": "ற"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "Nirai",
+                      "tamil_type": "நிரை",
+                      "value": "னறிந்",
+                      "children": [
+                        {
+                          "type": "Kuril",
+                          "tamil_type": "குறில்",
+                          "value": "ன"
+                        },
+                        {
+                          "type": "Kuril",
+                          "tamil_type": "குறில்",
+                          "value": "றி"
+                        },
+                        {
+                          "type": "Otru",
+                          "tamil_type": "ஒற்று",
+                          "value": "ந்"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "Ner",
+                  "tamil_type": "நேர்",
+                  "value": "து",
+                  "children": [
+                    {
+                      "type": "Kutriyalugaram",
+                      "tamil_type": "குற்றியலுகரம்",
+                      "value": "து"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Eetradi",
+      "tamil_type": "ஈற்றடி",
+      "value": "தீதின்றி வந்த பொருள்",
+      "feet": [
+        {
+          "type": "Cheer",
+          "tamil_type": "சீர்",
+          "value": "தீதின்றி",
+          "children": [
+            {
+              "type": "Themangai",
+              "tamil_type": "தேமாங்காய்",
+              "value": "தீதின்றி",
+              "children": [
+                {
+                  "type": "Thema",
+                  "tamil_type": "தேமா",
+                  "value": "தீதின்",
+                  "children": [
+                    {
+                      "type": "Ner",
+                      "tamil_type": "நேர்",
+                      "value": "தீ",
+                      "children": [
+                        {
+                          "type": "Nedil",
+                          "tamil_type": "நெடில்",
+                          "value": "தீ"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "Ner",
+                      "tamil_type": "நேர்",
+                      "value": "தின்",
+                      "children": [
+                        {
+                          "type": "Kuril",
+                          "tamil_type": "குறில்",
+                          "value": "தி"
+                        },
+                        {
+                          "type": "Otru",
+                          "tamil_type": "ஒற்று",
+                          "value": "ன்"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "Ner",
+                  "tamil_type": "நேர்",
+                  "value": "றி",
+                  "children": [
+                    {
+                      "type": "Kuril",
+                      "tamil_type": "குறில்",
+                      "value": "றி"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "Cheer",
+          "tamil_type": "சீர்",
+          "value": "வந்த",
+          "children": [
+            {
+              "type": "Thema",
+              "tamil_type": "தேமா",
+              "value": "வந்த",
+              "children": [
+                {
+                  "type": "Ner",
+                  "tamil_type": "நேர்",
+                  "value": "வந்",
+                  "children": [
+                    {
+                      "type": "Kuril",
+                      "tamil_type": "குறில்",
+                      "value": "வ"
+                    },
+                    {
+                      "type": "Otru",
+                      "tamil_type": "ஒற்று",
+                      "value": "ந்"
+                    }
+                  ]
+                },
+                {
+                  "type": "Ner",
+                  "tamil_type": "நேர்",
+                  "value": "த",
+                  "children": [
+                    {
+                      "type": "Kuril",
+                      "tamil_type": "குறில்",
+                      "value": "த"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "EetruCheer",
+          "tamil_type": "ஈற்றுச்சீர்",
+          "value": "பொருள்",
+          "children": [
+            {
+              "type": "Malar",
+              "tamil_type": "மலர்",
+              "value": "பொருள்",
+              "children": [
+                {
+                  "type": "Nirai",
+                  "tamil_type": "நிரை",
+                  "value": "பொருள்",
+                  "children": [
+                    {
+                      "type": "Kuril",
+                      "tamil_type": "குறில்",
+                      "value": "பொ"
+                    },
+                    {
+                      "type": "Mutriyalugaram",
+                      "tamil_type": "முற்றியலுகரம்",
+                      "value": "ரு"
+                    },
+                    {
+                      "type": "Otru",
+                      "tamil_type": "ஒற்று",
+                      "value": "ள்"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
